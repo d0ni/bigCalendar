@@ -5,6 +5,9 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+import Header from "./header.jsx";
+import AccauntUI from "./accauntUI.jsx";
+
 const localizer = momentLocalizer(moment);
 EventsDB = new Mongo.Collection("events");
 
@@ -20,8 +23,9 @@ export default class App extends TrackerReact(Component) {
 
   addEvent = ({ start, end }) => {
     const title = window.prompt("New Event name");
+    const room = document.location.pathname;
     if (title) {
-      Meteor.call("addEvent", title, start, end);
+      Meteor.call("addEvent", title, start, end, room);
     }
   };
 
@@ -47,26 +51,32 @@ export default class App extends TrackerReact(Component) {
   };
 
   events() {
-    return EventsDB.find().fetch();
+    const room = document.location.pathname;
+    return EventsDB.find({ room }).fetch();
   }
 
   render() {
     return (
-      <div>
-        <Calendar
-          step={60}
-          timeslots={1}
-          defaultView="week"
-          views={["week"]}
-          selectable={true}
-          localizer={localizer}
-          events={this.events()}
-          startAccessor="start"
-          endAccessor="end"
-          formats={this.format}
-          onSelectSlot={this.addEvent}
-          onSelectEvent={this.removeEvent}
-        />
+      <div className="main-container">
+        <AccauntUI showPopup={true} />
+        <div className="calendar-container">
+          <Header />
+          <p />
+          <Calendar
+            step={60}
+            timeslots={1}
+            defaultView="week"
+            views={["week"]}
+            selectable={true}
+            localizer={localizer}
+            events={this.events()}
+            startAccessor="start"
+            endAccessor="end"
+            formats={this.format}
+            onSelectSlot={this.addEvent}
+            onSelectEvent={this.removeEvent}
+          />
+        </div>
       </div>
     );
   }

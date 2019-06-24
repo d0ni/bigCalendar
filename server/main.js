@@ -7,25 +7,21 @@ Meteor.publish("allEvents", function() {
 });
 
 Meteor.methods({
-  addEvent(title, start, end) {
+  addEvent(title, start, end, room) {
     // if (!Meteor.userId()) {
     //   throw new Meteor.Error("not-authorized");
     // }
 
     EventsDB.insert({
-      title: title,
-      start: start,
-      end: end
-      // createdAt: new Date(),
-      // user: Meteor.userId()
+      title,
+      start,
+      end,
+      room,
+      user: Meteor.userId()
     });
   },
 
   removeEvent(event) {
-    // if (Meteor.userId() !== resolution.user) {
-    //   throw new Meteor.Error("wrong-user");
-    // }
-
     EventsDB.remove(event._id);
   }
 });

@@ -1,0 +1,17 @@
+header {
+  background-color: orange;
+  height: 40px;
+}
+
+.navigate-btn {
+  display: inline-block;
+  width: 70px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.login-area {
+  display: inline-block;
+  float: right;
+  line-height: 40px;
+}
