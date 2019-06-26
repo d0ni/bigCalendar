@@ -8,9 +8,9 @@ Meteor.publish("allEvents", function() {
 
 Meteor.methods({
   addEvent(title, start, end, room) {
-    // if (!Meteor.userId()) {
-    //   throw new Meteor.Error("not-authorized");
-    // }
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
 
     EventsDB.insert({
       title,
@@ -22,7 +22,15 @@ Meteor.methods({
   },
 
   removeEvent(event) {
-    EventsDB.remove(event._id);
+    if (!Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+
+    if (Meteor.userId() == event.user) {
+      EventsDB.remove(event._id);
+    } else {
+      throw new Meteor.Error("not-valid-user");
+    }
   }
 });
 

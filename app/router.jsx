@@ -15,6 +15,7 @@ export const renderRoutes = () => (
       <Route exact path="/2" component={App} />
       <Route exact path="/3" component={App} />
       <Route exact path="/4" component={App} />
+      <Route exact path="/5" component={App} />
     </Switch>
   </Router>
 );

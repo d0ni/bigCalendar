@@ -1,4 +1,5 @@
 .main-container {
+  z-index: 0;
 }
 .calendar-container {
   height: 100vh;

@@ -16,21 +16,29 @@ export default class App extends TrackerReact(Component) {
     super(...args);
     this.state = {
       subscription: {
-        resolutions: Meteor.subscribe("allEvents")
-      }
+        events: Meteor.subscribe("allEvents")
+      },
+      isPopup: false,
+      popupType: 1
     };
   }
 
   addEvent = ({ start, end }) => {
-    const title = window.prompt("New Event name");
+    // const title = window.prompt("New Event name");
+    const title = Meteor.user().username;
     const room = document.location.pathname;
-    if (title) {
+    // if (title) {
+    if (
+      confirm(
+        `Вы действительно хотите забронировать комнату на выбранное время?`
+      )
+    ) {
       Meteor.call("addEvent", title, start, end, room);
     }
   };
 
   removeEvent = event => {
-    if (confirm(`Вы действительно хотите удалить задание "${event.title}"?`)) {
+    if (confirm(`Вы действительно хотите снять бронировку комнаты?`)) {
       Meteor.call("removeEvent", event);
     }
   };
@@ -55,19 +63,40 @@ export default class App extends TrackerReact(Component) {
     return EventsDB.find({ room }).fetch();
   }
 
+  showLoginForm = () => {
+    this.setState({ isPopup: !this.state.isPopup });
+    this.setState({ popupType: 1 });
+  };
+
+  showRegisterForm = () => {
+    this.setState({ isPopup: !this.state.isPopup });
+    this.setState({ popupType: 2 });
+  };
+
+  closePopup = () => {
+    this.setState({ isPopup: !this.state.isPopup });
+  };
+
   render() {
     return (
       <div className="main-container">
-        <AccauntUI showPopup={true} />
+        <AccauntUI
+          statePopup={this.state.isPopup}
+          typePopup={this.state.popupType}
+          closePopup={this.closePopup}
+        />
         <div className="calendar-container">
-          <Header />
+          <Header
+            showLoginForm={this.showLoginForm}
+            showRegisterForm={this.showRegisterForm}
+          />
           <p />
           <Calendar
             step={60}
             timeslots={1}
             defaultView="week"
             views={["week"]}
-            selectable={true}
+            selectable={!this.state.isPopup}
             localizer={localizer}
             events={this.events()}
             startAccessor="start"
