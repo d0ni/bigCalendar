@@ -24,22 +24,28 @@ export default class App extends TrackerReact(Component) {
   }
 
   addEvent = ({ start, end }) => {
-    // const title = window.prompt("New Event name");
-    const title = Meteor.user().username;
-    const room = document.location.pathname;
-    // if (title) {
-    if (
-      confirm(
-        `Вы действительно хотите забронировать комнату на выбранное время?`
-      )
-    ) {
-      Meteor.call("addEvent", title, start, end, room);
+    if (Meteor.userId()) {
+      if (
+        confirm(
+          `Вы действительно хотите забронировать комнату на выбранное время?`
+        )
+      ) {
+        const title = Meteor.user().username;
+        const room = document.location.pathname;
+        Meteor.call("addEvent", title, start, end, room);
+      }
+    } else {
+      alert("Вы должны войти в систему или зарегистрироваться");
     }
   };
 
   removeEvent = event => {
-    if (confirm(`Вы действительно хотите снять бронировку комнаты?`)) {
-      Meteor.call("removeEvent", event);
+    if (Meteor.userId()) {
+      if (confirm(`Вы действительно хотите снять бронировку комнаты?`)) {
+        Meteor.call("removeEvent", event);
+      }
+    } else {
+      alert("Вы должны войти в систему или зарегистрироваться");
     }
   };
 

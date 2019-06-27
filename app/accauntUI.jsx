@@ -25,7 +25,14 @@ export default class AccountUI extends Component {
   }
 
   render() {
-    if (this.props.statePopup && this.props.typePopup == 1) {
+    let btn;
+    if (this.props.typePopup == 1) {
+      btn = <button onClick={this.logIn.bind(this)}>Login</button>;
+    } else {
+      btn = <button onClick={this.createUser.bind(this)}>Register</button>;
+    }
+
+    if (this.props.statePopup) {
       return (
         <div className="b-popup">
           <div className="b-popup-content">
@@ -35,25 +42,8 @@ export default class AccountUI extends Component {
             <p>
               Password: <input type="password" ref={this.password} />
             </p>
-            <p>
-              <button onClick={this.logIn.bind(this)}>Login</button>
-              <button onClick={this.props.closePopup}>Cancel</button>
-            </p>
-          </div>
-        </div>
-      );
-    } else if (this.props.statePopup && this.props.typePopup == 2) {
-      return (
-        <div className="b-popup">
-          <div className="b-popup-content">
-            <p>
-              Username: <input type="text" ref={this.username} />
-            </p>
-            <p>
-              Password: <input type="password" ref={this.password} />
-            </p>
-            <p>
-              <button onClick={this.createUser.bind(this)}>Register</button>
+            <p align="center">
+              {btn}
               <button onClick={this.props.closePopup}>Cancel</button>
             </p>
           </div>
