@@ -4,6 +4,7 @@ import { Router, Route, Switch } from "react-router";
 // route components
 import App from "./app.jsx";
 import Header from "./header.jsx";
+import Test from "./test";
 
 const browserHistory = require("history").createBrowserHistory();
 
@@ -16,6 +17,7 @@ export const renderRoutes = () => (
       <Route exact path="/3" component={App} />
       <Route exact path="/4" component={App} />
       <Route exact path="/5" component={App} />
+      <Route path="/test" component={Test} />
     </Switch>
   </Router>
 );

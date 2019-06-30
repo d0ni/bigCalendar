@@ -14,19 +14,19 @@ export default class Header extends TrackerReact(Component) {
 
     const navBtn = (
       <nav className="nav">
-        <a id="1" className="navigate-btn" href="/1">
+        <a className="navigate-btn" href="/1">
           Room_1
         </a>
-        <a id="2" className="navigate-btn" href="/2">
+        <a className="navigate-btn" href="/2">
           Room_2
         </a>
-        <a id="3" className="navigate-btn" href="/3">
+        <a className="navigate-btn" href="/3">
           Room_3
         </a>
-        <a id="4" className="navigate-btn" href="/4">
+        <a className="navigate-btn" href="/4">
           Room_4
         </a>
-        <a id="5" className="navigate-btn" href="/5">
+        <a className="navigate-btn" href="/5">
           Room_5
         </a>
       </nav>
