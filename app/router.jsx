@@ -4,7 +4,7 @@ import { Router, Route, Switch } from "react-router";
 // route components
 import App from "./app.jsx";
 import Header from "./header.jsx";
-import Test from "./test";
+import Test from "./test.jsx";
 
 const browserHistory = require("history").createBrowserHistory();
 

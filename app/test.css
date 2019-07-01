@@ -1,0 +1,44 @@
+.week-days {
+  display: inline-block;
+}
+
+.days {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+}
+
+.room {
+  display: inline-block;
+  width: 150px;
+}
+
+.caledrar-wrapper {
+  display: inline-block;
+}
+
+.room-name {
+  display: inline-block;
+  width: 150px;
+}
+
+.curent-month {
+  display: inline-block;
+  width: 600px;
+  /* margin: auto; */
+  text-align: center;
+}
+
+.bnt-change-date {
+  display: inline-block;
+  width: 75px;
+}
+
+.day-times {
+  display: inline-block;
+  margin: auto;
+}
+
+.btn-time {
+  width: 75px;
+}
