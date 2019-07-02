@@ -23,11 +23,17 @@ export default class Test extends Component {
 
     const dayShift = parseInt(moment(month).format("d"));
 
+    console.log(
+      moment(month)
+        .add(20 - dayShift, "days")
+        .format("D")
+    );
+
     return (
-      <div>
+      <div className="main-container">
         <h1>Бронирование переговорок</h1>
         <div className="header">
-          <div className="room">Комната</div>
+          <h3 className="room">Комната</h3>
           <div className="caledrar-wrapper">
             <div className="month">
               <button
@@ -72,17 +78,17 @@ export default class Test extends Component {
               </div>
             </div>
           </div>
-          <div className="green-room">
-            <div className="room-name">
-              <h3>Зеленая</h3>
-              <h3>(до 5 персон)</h3>
-            </div>
-            <DayTimes />
-            <DayTimes />
-            <DayTimes />
-            <DayTimes />
-            <DayTimes />
+        </div>
+        <div className="green-room">
+          <div className="room-name">
+            <h3 className="room-color">Зеленая</h3>
+            <h3 className="room-sum">(до 5 персон)</h3>
           </div>
+          <DayTimes />
+          <DayTimes />
+          <DayTimes />
+          <DayTimes />
+          <DayTimes />
         </div>
       </div>
     );

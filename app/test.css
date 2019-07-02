@@ -1,32 +1,17 @@
-.week-days {
-  display: inline-block;
-}
-
-.days {
-  display: inline-block;
-  width: 150px;
-  text-align: center;
+.header {
+  display: flex;
 }
 
 .room {
-  display: inline-block;
   width: 150px;
-}
-
-.caledrar-wrapper {
-  display: inline-block;
-}
-
-.room-name {
-  display: inline-block;
-  width: 150px;
+  align-self: center;
 }
 
 .curent-month {
   display: inline-block;
   width: 600px;
-  /* margin: auto; */
   text-align: center;
+  margin: auto;
 }
 
 .bnt-change-date {
@@ -34,11 +19,54 @@
   width: 75px;
 }
 
+.week-days {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.days {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  font-size: 14;
+}
+
+.green-room {
+  display: flex;
+  border: 2px;
+}
+
+.room-name {
+  width: 150px;
+  align-self: center;
+}
+
+.room-color {
+  margin: auto;
+}
+
+.room-sum {
+  margin: auto;
+  color: gray;
+}
+
 .day-times {
   display: inline-block;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .btn-time {
   width: 75px;
+  margin: auto;
+}
+
+.btn-line {
+  margin: auto;
+}
+
+.main-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
 }
